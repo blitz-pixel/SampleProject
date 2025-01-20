@@ -1,6 +1,9 @@
 package com.example.SampleLoginApplication.Models;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -17,15 +20,20 @@ public class User {
     private Integer id;
 
     @Column(name = "User_name")
+    @JsonProperty("username")
     private String userName;
 
     @Column(name = "Password")
+    @JsonProperty("password")
     private String password;
 
-    @Column(name = "Email_id")
+    @Column(name = "email_id")
+    @JsonProperty("email")
     private String EmailId;
 
     @Column(name = "Created_At")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS")
+    @JsonIgnore
     private Timestamp createdAt;
 
     public User () {
